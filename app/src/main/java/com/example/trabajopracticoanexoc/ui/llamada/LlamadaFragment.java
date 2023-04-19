@@ -34,21 +34,6 @@ public class LlamadaFragment extends Fragment {
             }
         });
 
-        vm.getLlamar().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if(aBoolean){
-                    Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel:" + binding.etNumero.getText().toString()));
-                    if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.CALL_PHONE}, 1);
-                        return;
-                    }
-                    startActivity(intent);
-                }
-            }
-        });
-
         binding.btnLlamar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
